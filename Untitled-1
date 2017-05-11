@@ -1,0 +1,48 @@
+    $wp_customize->add_panel('theme option',
+        array(
+        'title'     =>__('Theme option','first'),
+        'priority'  =>22
+    ));
+        
+    $wp_customize->add_section( 'logo_upload',array(
+        'title'     =>__('logo Upload', 'first'),
+        'priority'  =>2,
+        'panel'     => 'theme option'
+    ));
+    
+    $wp_customize->add_setting( 'logo_id',array(
+        'default'   => '',
+    ) );
+    
+    $wp_customize->add_control( 'logo_upload',array(
+        'title'     => __('Upload your logo','first'),
+        'section'   => 'logo_upload',
+        'setting'   => 'logo_id',
+    ));
+    
+    
+    $wp_customize->add_panel( 'theme_options', 
+        array(
+        'title' => __('Theme option', 'test2'),
+        'priority'=> 22,
+        ));
+    
+    // add new section
+    $wp_customize->add_section( 'first_theme_colors', array(
+        'title' => __( 'Theme Colors', 'first' ),
+        'priority' => 2,
+        'panel' => 'theme_options'
+    ) );
+
+    // add color picker setting
+    $wp_customize->add_setting( 'link_color', array(
+        'default' => '#ff0000'
+    ) );
+
+    // add color picker control
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'link_color', array(
+        'label' => 'Link Color',
+        'section' => 'first_theme_colors',
+        'settings' => 'link_color',
+    ) ) );
+    
